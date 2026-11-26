@@ -1,21 +1,5 @@
-claude() {
-  case "$1" in
-    fat)
-      shift
-      command claude "$@"
-      ;;
-    agents|attach|auth|auto-mode|doctor|gateway|import|install|kill|logs|mcp|plugin|plugins|purge|respawn|rm|setup-token|stop|ultrareview|update|upgrade)
-      command claude "$@"
-      ;;
-    *)
-      local chrome=(--no-chrome)
-      local arg
-      for arg in "$@"; do
-        [[ "$arg" == "--chrome" ]] && chrome=()
-      done
-      local settings
-      settings="$(python3 "$CLAUDE_LAUNCH_DIR/lean_settings.py" 2>/dev/null)" || settings="$CLAUDE_LAUNCH_DIR/lean.json"
-      command claude --settings "$settings" "${chrome[@]}" "$@"
-      ;;
-  esac
-}
+# The launcher moved into the context-audit skill. This keeps a shell profile
+# installed from the old location working; re-run `just launcher` to point the
+# profile at the new one, after which this file is no longer read.
+CLAUDE_LAUNCH_DIR="${CLAUDE_LAUNCH_DIR%/launch}/skills/context-audit/launcher"
+source "$CLAUDE_LAUNCH_DIR/claude.zsh"
