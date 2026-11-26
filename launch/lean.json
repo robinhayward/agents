@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "deny": ["Artifact", "ScheduleWakeup", "SendFeedback", "ListAgents"]
+  },
+  "syncClaudeAiSkills": false,
+  "disableClaudeAiConnectors": true
+}
